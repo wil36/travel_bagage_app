@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bagage_app/screens/profile/activity_summary_screen.dart';
+import 'package:travel_bagage_app/screens/profile/edit_profile_screen.dart';
+import 'package:travel_bagage_app/screens/profile/identity_verification_screen.dart';
+import 'package:travel_bagage_app/screens/profile/payment_methods_screen.dart';
+import 'package:travel_bagage_app/screens/profile/notifications_screen.dart';
+import 'package:travel_bagage_app/screens/profile/help_support_screen.dart';
+import 'package:travel_bagage_app/screens/profile/terms_conditions_screen.dart';
+import 'package:travel_bagage_app/screens/profile/privacy_policy_screen.dart';
 import 'package:travel_bagage_app/screens/auth/login_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -98,7 +105,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.edit_outlined,
               title: 'Modifier le profil',
               onTap: () {
-                // TODO: Navigate to edit profile
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const EditProfileScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -119,7 +131,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.verified_user_outlined,
               title: 'Vérification d\'identité',
               onTap: () {
-                // TODO: Navigate to identity verification
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const IdentityVerificationScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -127,7 +144,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.payment_outlined,
               title: 'Moyens de paiement',
               onTap: () {
-                // TODO: Navigate to payment methods
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PaymentMethodsScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -135,7 +157,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.notifications_outlined,
               title: 'Notifications',
               onTap: () {
-                // TODO: Navigate to notifications settings
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NotificationsScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -151,7 +178,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.help_outline,
               title: 'Aide et support',
               onTap: () {
-                // TODO: Navigate to help
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HelpSupportScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -159,7 +191,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.description_outlined,
               title: 'Conditions d\'utilisation',
               onTap: () {
-                // TODO: Navigate to terms
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const TermsConditionsScreen(),
+                  ),
+                );
               },
             ),
             _buildMenuItem(
@@ -167,7 +204,12 @@ class ProfileScreen extends StatelessWidget {
               icon: Icons.privacy_tip_outlined,
               title: 'Politique de confidentialité',
               onTap: () {
-                // TODO: Navigate to privacy policy
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PrivacyPolicyScreen(),
+                  ),
+                );
               },
             ),
             const SizedBox(height: 8),
