@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 import 'package:travel_bagage_app/models/package_model.dart';
+import 'package:travel_bagage_app/screens/trip_details_screen.dart';
+import 'package:travel_bagage_app/screens/package_details_screen.dart';
 
 class ActivitySummaryScreen extends StatefulWidget {
   const ActivitySummaryScreen({super.key});
@@ -242,47 +244,60 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen>
   Widget _buildTripCard(TripModel trip) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[200]!),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => TripDetailsScreen(trip: trip),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Icon(Icons.flight_takeoff, size: 20, color: Colors.grey[600]),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        '${trip.departureCity} → ${trip.arrivalCity}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Icon(Icons.flight_takeoff, size: 20, color: Colors.grey[600]),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            '${trip.departureCity} → ${trip.arrivalCity}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  _buildStatusChip(trip.status),
+                ],
               ),
-              _buildStatusChip(trip.status),
+              const SizedBox(height: 8),
+              Text(
+                '${trip.departureDate.day}/${trip.departureDate.month}/${trip.departureDate.year}',
+                style: TextStyle(color: Colors.grey[600]),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '${trip.availableWeight} kg disponibles • ${trip.pricePerKg} €/kg',
+                style: TextStyle(color: Colors.grey[600], fontSize: 14),
+              ),
             ],
           ),
-          const SizedBox(height: 8),
-          Text(
-            '${trip.departureDate.day}/${trip.departureDate.month}/${trip.departureDate.year}',
-            style: TextStyle(color: Colors.grey[600]),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            '${trip.availableWeight} kg disponibles • ${trip.pricePerKg} €/kg',
-            style: TextStyle(color: Colors.grey[600], fontSize: 14),
-          ),
-        ],
+        ),
       ),
     );
   }
@@ -290,48 +305,61 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen>
   Widget _buildPackageCard(PackageModel package) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey[200]!),
         borderRadius: BorderRadius.circular(12),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => PackageDetailsScreen(package: package),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    Icon(Icons.inventory_2_outlined,
-                        size: 20, color: Colors.grey[600]),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: Text(
-                        '${package.departureCity} → ${package.arrivalCity}',
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+              Row(
+                children: [
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Icon(Icons.inventory_2_outlined,
+                            size: 20, color: Colors.grey[600]),
+                        const SizedBox(width: 8),
+                        Expanded(
+                          child: Text(
+                            '${package.departureCity} → ${package.arrivalCity}',
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                  _buildPackageStatusChip(package.status),
+                ],
               ),
-              _buildPackageStatusChip(package.status),
+              const SizedBox(height: 8),
+              Text(
+                package.description,
+                style: TextStyle(color: Colors.grey[700]),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                '${package.weight} kg • ${package.offeredPrice} €',
+                style: TextStyle(color: Colors.grey[600], fontSize: 14),
+              ),
             ],
           ),
-          const SizedBox(height: 8),
-          Text(
-            package.description,
-            style: TextStyle(color: Colors.grey[700]),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            '${package.weight} kg • ${package.offeredPrice} €',
-            style: TextStyle(color: Colors.grey[600], fontSize: 14),
-          ),
-        ],
+        ),
       ),
     );
   }
