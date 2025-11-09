@@ -195,7 +195,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: Colors.blue,
+            activeTrackColor: Colors.blue,
           ),
         ],
       ),

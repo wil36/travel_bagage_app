@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_bagage_app/screens/home_screen.dart';
+import 'package:travel_bagage_app/screens/main_screen.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
   final String email;
@@ -46,7 +46,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
       // TODO: Sauvegarder les informations du profil
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     }
   }

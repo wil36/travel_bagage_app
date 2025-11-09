@@ -14,12 +14,12 @@ class GlassBottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
+            color: Colors.black.withValues(alpha: 0.2),
             blurRadius: 20,
             offset: const Offset(0, 10),
           ),
@@ -30,7 +30,7 @@ class GlassBottomNavBar extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Container(
-            height: 70,
+            height: 90,
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(50),
@@ -48,13 +48,13 @@ class GlassBottomNavBar extends StatelessWidget {
                   index: 0,
                 ),
                 _buildNavItem(
-                  icon: Icons.search_rounded,
-                  label: 'Recherche',
+                  icon: Icons.flight_takeoff_rounded,
+                  label: 'Voyages',
                   index: 1,
                 ),
                 _buildNavItem(
-                  icon: Icons.add_circle_rounded,
-                  label: 'Ajouter',
+                  icon: Icons.inventory_2_rounded,
+                  label: 'Colis',
                   index: 2,
                 ),
                 _buildNavItem(
@@ -107,12 +107,15 @@ class GlassBottomNavBar extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 4),
-              Text(
-                label,
-                style: TextStyle(
-                  fontSize: 11,
-                  fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                  color: isSelected ? Colors.blue : Colors.grey[600],
+              Visibility(
+                visible: isSelected,
+                child: Text(
+                  label,
+                  style: TextStyle(
+                    fontSize: 11,
+                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+                    color: isSelected ? Colors.blue : Colors.grey[600],
+                  ),
                 ),
               ),
             ],

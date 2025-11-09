@@ -1,60 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:travel_bagage_app/models/trip_model.dart';
-import 'package:travel_bagage_app/screens/trip_details_screen.dart';
+import 'package:travel_bagage_app/models/package_model.dart';
+import 'package:travel_bagage_app/screens/package_details_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
-import 'package:travel_bagage_app/screens/search_trips_screen.dart';
 import 'package:travel_bagage_app/widgets/bottom_nav_spacer.dart';
 
-class TripsListScreen extends StatefulWidget {
-  const TripsListScreen({super.key});
+class PackagesListScreen extends StatefulWidget {
+  const PackagesListScreen({super.key});
 
   @override
-  State<TripsListScreen> createState() => _TripsListScreenState();
+  State<PackagesListScreen> createState() => _PackagesListScreenState();
 }
 
-class _TripsListScreenState extends State<TripsListScreen> {
-  final List<TripModel> _trips = [
-    TripModel(
+class _PackagesListScreenState extends State<PackagesListScreen> {
+  final List<PackageModel> _packages = [
+    PackageModel(
       id: '1',
-      userId: 'user1',
-      userName: 'Jean Dupont',
+      senderId: 'user1',
+      senderName: 'Sophie Bernard',
       departureCity: 'Paris',
       departureCountry: 'France',
       arrivalCity: 'Dakar',
       arrivalCountry: 'Sénégal',
-      departureDate: DateTime.now().add(const Duration(days: 15)),
-      arrivalDate: DateTime.now().add(const Duration(days: 16)),
-      availableWeight: 10.0,
-      pricePerKg: 5.0,
-      description: 'Voyage professionnel, je peux transporter des colis légers',
+      neededByDate: DateTime.now().add(const Duration(days: 10)),
+      weight: 5.0,
+      offeredPrice: 25.0,
+      description: 'Documents importants à envoyer à ma famille',
+      category: 'documents',
     ),
-    TripModel(
+    PackageModel(
       id: '2',
-      userId: 'user2',
-      userName: 'Marie Martin',
-      departureCity: 'Lyon',
-      departureCountry: 'France',
-      arrivalCity: 'Abidjan',
-      arrivalCountry: 'Côte d\'Ivoire',
-      departureDate: DateTime.now().add(const Duration(days: 20)),
-      arrivalDate: DateTime.now().add(const Duration(days: 21)),
-      availableWeight: 15.0,
-      pricePerKg: 4.5,
-      description: 'Retour au pays, disponible pour transporter documents et vêtements',
-    ),
-    TripModel(
-      id: '3',
-      userId: 'user3',
-      userName: 'Ahmed Diallo',
+      senderId: 'user2',
+      senderName: 'Ahmed Diallo',
       departureCity: 'Marseille',
       departureCountry: 'France',
       arrivalCity: 'Bamako',
       arrivalCountry: 'Mali',
-      departureDate: DateTime.now().add(const Duration(days: 10)),
-      arrivalDate: DateTime.now().add(const Duration(days: 11)),
-      availableWeight: 8.0,
-      pricePerKg: 6.0,
-      description: 'Visite familiale',
+      neededByDate: DateTime.now().add(const Duration(days: 15)),
+      weight: 8.0,
+      offeredPrice: 50.0,
+      description: 'Vêtements pour enfants et jouets',
+      category: 'vêtements',
+    ),
+    PackageModel(
+      id: '3',
+      senderId: 'user3',
+      senderName: 'Marie Kouassi',
+      departureCity: 'Lyon',
+      departureCountry: 'France',
+      arrivalCity: 'Abidjan',
+      arrivalCountry: 'Côte d\'Ivoire',
+      neededByDate: DateTime.now().add(const Duration(days: 20)),
+      weight: 3.0,
+      offeredPrice: 20.0,
+      description: 'Produits cosmétiques et médicaments',
+      category: 'autre',
     ),
   ];
 
@@ -62,17 +61,12 @@ class _TripsListScreenState extends State<TripsListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Voyages disponibles'),
+        title: const Text('Colis disponibles'),
         actions: [
           IconButton(
             icon: const Icon(Icons.search_rounded),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SearchTripsScreen(),
-                ),
-              );
+              _showSearchDialog();
             },
           ),
           IconButton(
@@ -83,16 +77,16 @@ class _TripsListScreenState extends State<TripsListScreen> {
           ),
         ],
       ),
-      body: _trips.isEmpty
+      body: _packages.isEmpty
           ? _buildEmptyState()
           : ListView.builder(
               padding: const EdgeInsets.all(16.0),
-              itemCount: _trips.length + 1,
+              itemCount: _packages.length + 1,
               itemBuilder: (context, index) {
-                if (index == _trips.length) {
+                if (index == _packages.length) {
                   return const BottomNavSpacer();
                 }
-                return _buildTripCard(_trips[index]);
+                return _buildPackageCard(_packages[index]);
               },
             ),
     );
@@ -104,13 +98,13 @@ class _TripsListScreenState extends State<TripsListScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.flight_takeoff,
+            Icons.inventory_2_outlined,
             size: 80,
             color: Colors.grey[400],
           ),
           const SizedBox(height: 16),
           Text(
-            'Aucun voyage disponible',
+            'Aucun colis disponible',
             style: TextStyle(
               fontSize: 18,
               color: Colors.grey[600],
@@ -121,7 +115,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
     );
   }
 
-  Widget _buildTripCard(TripModel trip) {
+  Widget _buildPackageCard(PackageModel package) {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       decoration: BoxDecoration(
@@ -134,7 +128,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => TripDetailsScreen(trip: trip),
+              builder: (context) => PackageDetailsScreen(package: package),
             ),
           );
         },
@@ -144,16 +138,15 @@ class _TripsListScreenState extends State<TripsListScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // En-tête : Trajet principal
+              // En-tête : Trajet
               Row(
                 children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // Ville de départ
                         Text(
-                          trip.departureCity,
+                          package.departureCity,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -161,7 +154,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                           ),
                         ),
                         Text(
-                          trip.departureCountry,
+                          package.departureCountry,
                           style: TextStyle(
                             fontSize: 13,
                             color: Colors.grey[600],
@@ -170,27 +163,25 @@ class _TripsListScreenState extends State<TripsListScreen> {
                       ],
                     ),
                   ),
-                  // Icône avion
                   Container(
                     padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
-                      color: Colors.blue[50],
+                      color: Colors.orange[50],
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
-                      Icons.flight_takeoff_rounded,
-                      color: Colors.blue[700],
+                      Icons.inventory_2_rounded,
+                      color: Colors.orange[700],
                       size: 20,
                     ),
                   ),
                   const SizedBox(width: 12),
-                  // Ville d'arrivée
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          trip.arrivalCity,
+                          package.arrivalCity,
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
@@ -198,7 +189,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                           ),
                         ),
                         Text(
-                          trip.arrivalCountry,
+                          package.arrivalCountry,
                           style: TextStyle(
                             fontSize: 13,
                             color: Colors.grey[600],
@@ -210,38 +201,33 @@ class _TripsListScreenState extends State<TripsListScreen> {
                 ],
               ),
 
-              // Divider
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
-                child: Divider(
-                  height: 1,
-                  color: Colors.grey[200],
-                ),
+                child: Divider(height: 1, color: Colors.grey[200]),
               ),
 
-              // Informations du voyage
+              // Informations de l'expéditeur
               Row(
                 children: [
-                  // Avatar et nom
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (context) => UserProfileScreen(
-                            userId: trip.userId,
-                            userName: trip.userName,
+                            userId: package.userId,
+                            userName: package.userName,
                           ),
                         ),
                       );
                     },
                     child: CircleAvatar(
                       radius: 16,
-                      backgroundColor: Colors.blue[50],
+                      backgroundColor: Colors.orange[50],
                       child: Text(
-                        trip.userName[0].toUpperCase(),
+                        package.userName[0].toUpperCase(),
                         style: TextStyle(
-                          color: Colors.blue[700],
+                          color: Colors.orange[700],
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                         ),
@@ -251,7 +237,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text(
-                      trip.userName,
+                      package.userName,
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
@@ -259,8 +245,6 @@ class _TripsListScreenState extends State<TripsListScreen> {
                       ),
                     ),
                   ),
-
-                  // Date
                   Icon(
                     Icons.calendar_today_rounded,
                     size: 14,
@@ -268,7 +252,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                   ),
                   const SizedBox(width: 4),
                   Text(
-                    '${trip.departureDate.day}/${trip.departureDate.month}/${trip.departureDate.year}',
+                    '${package.neededByDate.day}/${package.neededByDate.month}/${package.neededByDate.year}',
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 13,
@@ -280,16 +264,42 @@ class _TripsListScreenState extends State<TripsListScreen> {
 
               const SizedBox(height: 12),
 
+              // Catégorie
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: _getCategoryColor(package.category).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                      _getCategoryIcon(package.category),
+                      size: 14,
+                      color: _getCategoryColor(package.category),
+                    ),
+                    const SizedBox(width: 4),
+                    Text(
+                      _getCategoryLabel(package.category),
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: _getCategoryColor(package.category),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+
+              const SizedBox(height: 12),
+
               // Poids et prix
               Row(
                 children: [
-                  // Poids disponible
                   Expanded(
                     child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 8,
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                       decoration: BoxDecoration(
                         color: Colors.grey[50],
                         borderRadius: BorderRadius.circular(8),
@@ -298,13 +308,13 @@ class _TripsListScreenState extends State<TripsListScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.work_outline_rounded,
+                            Icons.scale_outlined,
                             size: 16,
                             color: Colors.grey[700],
                           ),
                           const SizedBox(width: 6),
                           Text(
-                            '${trip.availableWeight} kg',
+                            '${package.weight} kg',
                             style: TextStyle(
                               fontSize: 13,
                               fontWeight: FontWeight.w600,
@@ -316,18 +326,14 @@ class _TripsListScreenState extends State<TripsListScreen> {
                     ),
                   ),
                   const SizedBox(width: 12),
-                  // Prix
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 12,
-                      vertical: 8,
-                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.blue,
+                      color: Colors.green,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Text(
-                      '${trip.pricePerKg} €/kg',
+                      '${package.offeredPrice} €',
                       style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -337,10 +343,118 @@ class _TripsListScreenState extends State<TripsListScreen> {
                   ),
                 ],
               ),
+
+              const SizedBox(height: 12),
+
+              // Description
+              Text(
+                package.description,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontSize: 13,
+                  color: Colors.grey[700],
+                ),
+              ),
             ],
           ),
         ),
       ),
+    );
+  }
+
+  IconData _getCategoryIcon(String category) {
+    switch (category) {
+      case 'documents':
+        return Icons.description_outlined;
+      case 'vêtements':
+        return Icons.checkroom_outlined;
+      case 'électronique':
+        return Icons.devices_outlined;
+      default:
+        return Icons.category_outlined;
+    }
+  }
+
+  String _getCategoryLabel(String category) {
+    switch (category) {
+      case 'documents':
+        return 'Documents';
+      case 'vêtements':
+        return 'Vêtements';
+      case 'électronique':
+        return 'Électronique';
+      default:
+        return 'Autre';
+    }
+  }
+
+  Color _getCategoryColor(String category) {
+    switch (category) {
+      case 'documents':
+        return Colors.blue;
+      case 'vêtements':
+        return Colors.purple;
+      case 'électronique':
+        return Colors.teal;
+      default:
+        return Colors.grey;
+    }
+  }
+
+  void _showSearchDialog() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        final departureCityController = TextEditingController();
+        final arrivalCityController = TextEditingController();
+
+        return AlertDialog(
+          title: const Text('Rechercher un colis'),
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  controller: departureCityController,
+                  decoration: const InputDecoration(
+                    labelText: 'Ville de départ',
+                    prefixIcon: Icon(Icons.flight_takeoff_rounded),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                const SizedBox(height: 16),
+                TextField(
+                  controller: arrivalCityController,
+                  decoration: const InputDecoration(
+                    labelText: 'Ville d\'arrivée',
+                    prefixIcon: Icon(Icons.flight_land_rounded),
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Annuler'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                // TODO: Implement search functionality
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Recherche en cours...'),
+                  ),
+                );
+              },
+              child: const Text('Rechercher'),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -375,7 +489,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
               ),
               const SizedBox(height: 16),
               ListTile(
-                leading: const Icon(Icons.sort_rounded),
+                leading: const Icon(Icons.euro_rounded),
                 title: const Text('Trier par prix'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {
@@ -384,8 +498,17 @@ class _TripsListScreenState extends State<TripsListScreen> {
                 },
               ),
               ListTile(
+                leading: const Icon(Icons.scale_rounded),
+                title: const Text('Trier par poids'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () {
+                  Navigator.pop(context);
+                  // TODO: Implement weight sorting
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.calendar_today_rounded),
-                title: const Text('Trier par date'),
+                title: const Text('Trier par date limite'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {
                   Navigator.pop(context);
@@ -393,12 +516,12 @@ class _TripsListScreenState extends State<TripsListScreen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.scale_rounded),
-                title: const Text('Trier par poids disponible'),
+                leading: const Icon(Icons.category_rounded),
+                title: const Text('Filtrer par catégorie'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () {
                   Navigator.pop(context);
-                  // TODO: Implement weight sorting
+                  // TODO: Implement category filter
                 },
               ),
               const SizedBox(height: 16),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bagage_app/screens/auth/register_screen.dart';
 import 'package:travel_bagage_app/screens/auth/forgot_password_screen.dart';
-import 'package:travel_bagage_app/screens/home_screen.dart';
+import 'package:travel_bagage_app/screens/main_screen.dart';
 import 'package:travel_bagage_app/widgets/google_sign_in_button.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formKey.currentState!.validate()) {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     }
   }
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
     // Pour l'instant, on simule une connexion
     Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => const HomeScreen()),
+      MaterialPageRoute(builder: (context) => const MainScreen()),
     );
   }
 

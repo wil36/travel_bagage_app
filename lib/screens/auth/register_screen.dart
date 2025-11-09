@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_bagage_app/screens/auth/complete_profile_screen.dart';
-import 'package:travel_bagage_app/screens/home_screen.dart';
+import 'package:travel_bagage_app/screens/main_screen.dart';
 import 'package:travel_bagage_app/widgets/google_sign_in_button.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -43,7 +43,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => const HomeScreen()),
+        MaterialPageRoute(builder: (context) => const MainScreen()),
       );
     }
   }

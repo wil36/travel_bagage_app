@@ -381,10 +381,6 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen>
         color = Colors.orange;
         text = 'En attente';
         break;
-      case PackageStatus.matched:
-        color = Colors.blue;
-        text = 'Assigné';
-        break;
       case PackageStatus.inTransit:
         color = Colors.purple;
         text = 'En transit';

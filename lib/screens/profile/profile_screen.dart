@@ -8,6 +8,7 @@ import 'package:travel_bagage_app/screens/profile/help_support_screen.dart';
 import 'package:travel_bagage_app/screens/profile/terms_conditions_screen.dart';
 import 'package:travel_bagage_app/screens/profile/privacy_policy_screen.dart';
 import 'package:travel_bagage_app/screens/auth/login_screen.dart';
+import 'package:travel_bagage_app/widgets/bottom_nav_spacer.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -257,6 +258,9 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
+
+            // Spacer pour éviter que le contenu soit caché par la navbar
+            const BottomNavSpacer(),
           ],
         ),
       ),
