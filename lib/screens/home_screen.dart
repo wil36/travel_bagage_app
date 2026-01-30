@@ -83,19 +83,27 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
+      
       appBar: AppBar(
-        title: const Text('Travel Bagage'),
+        title: Padding(
+          padding: const EdgeInsets.only(left: 16.0),
+          child: Image.asset("assets/images/logo.png", width: 40, height: 40),
+        ),
+        centerTitle: false,
         actions: [
-          IconButton(
-            icon: const Icon(IconlyLight.notification),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const NotificationsScreen(),
-                ),
-              );
-            },
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: IconButton(
+              icon: const Icon(IconlyLight.notification),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const NotificationsScreen(),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),

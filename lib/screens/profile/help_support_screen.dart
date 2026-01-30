@@ -1,8 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:travel_bagage_app/config/app_config.dart';
 
 class HelpSupportScreen extends StatelessWidget {
   const HelpSupportScreen({super.key});
+
+  Future<void> _launchEmail() async {
+    final Uri emailUri = Uri(
+      scheme: 'mailto',
+      path: AppConfig.supportEmail,
+      queryParameters: {'subject': 'Support TravelBagage'},
+    );
+
+    if (await canLaunchUrl(emailUri)) {
+      await launchUrl(emailUri);
+    }
+  }
+
+  Future<void> _launchPhone() async {
+    final Uri phoneUri = Uri(scheme: 'tel', path: AppConfig.supportPhone);
+
+    if (await canLaunchUrl(phoneUri)) {
+      await launchUrl(phoneUri);
+    }
+  }
+
+  Future<void> _launchWhatsApp() async {
+    final Uri whatsappUri = Uri.parse(
+      '${AppConfig.whatsappBaseUrl}${AppConfig.whatsappNumber}?text=${Uri.encodeComponent(AppConfig.whatsappDefaultMessage)}',
+    );
+
+    if (await canLaunchUrl(whatsappUri)) {
+      await launchUrl(whatsappUri, mode: LaunchMode.externalApplication);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,31 +61,25 @@ class HelpSupportScreen extends StatelessWidget {
               _buildContactCard(
                 icon: IconlyLight.message,
                 title: 'Email',
-                subtitle: 'support@travelbagage.com',
+                subtitle: AppConfig.supportEmail,
                 color: Colors.blue,
-                onTap: () {
-                  // TODO: Ouvrir l'app email
-                },
+                onTap: _launchEmail,
               ),
               const SizedBox(height: 12),
               _buildContactCard(
                 icon: IconlyLight.call,
                 title: 'Téléphone',
-                subtitle: '+33 1 23 45 67 89',
+                subtitle: AppConfig.supportPhone,
                 color: Colors.green,
-                onTap: () {
-                  // TODO: Ouvrir le téléphone
-                },
+                onTap: _launchPhone,
               ),
               const SizedBox(height: 12),
               _buildContactCard(
                 icon: IconlyLight.chat,
                 title: 'Chat en direct',
-                subtitle: 'Discutez avec un agent',
-                color: Colors.purple,
-                onTap: () {
-                  // TODO: Ouvrir le chat
-                },
+                subtitle: 'Discutez avec nous sur WhatsApp',
+                color: const Color(0xFF25D366),
+                onTap: _launchWhatsApp,
               ),
 
               const SizedBox(height: 32),

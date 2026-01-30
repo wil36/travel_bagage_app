@@ -96,10 +96,10 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Icon(
-                    IconlyBold.send,
-                    size: 80,
-                    color: Colors.blue[600],
+                  Image.asset(
+                    "assets/images/logo.png",
+                    width: 100,
+                    height: 100,
                   ),
                   const SizedBox(height: 24),
                   const Text(

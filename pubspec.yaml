@@ -31,9 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
   image_picker: ^1.2.1
 
   # HTTP client pour les appels API
@@ -46,6 +43,9 @@ dependencies:
   # Support SVG
   flutter_svg: ^2.0.10
 
+  # URL launcher pour ouvrir email, téléphone, liens externes
+  url_launcher: ^6.2.5
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -56,6 +56,18 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
+
+  # Génération des icônes de l'application
+  flutter_launcher_icons: ^0.14.3
+
+# Configuration des icônes de l'application
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/logo_app.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/images/logo_app.png"
+  remove_alpha_ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
