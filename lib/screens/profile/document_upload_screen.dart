@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -93,7 +94,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
           ),
           child: Center(
             child: isCompleted
-                ? const Icon(Icons.check, color: Colors.white, size: 18)
+                ? const Icon(IconlyBold.tickSquare, color: Colors.white, size: 18)
                 : Text(
                     '${step + 1}',
                     style: TextStyle(
@@ -189,7 +190,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
           ),
           child: Row(
             children: [
-              Icon(Icons.info_outline, color: Colors.blue[700], size: 24),
+              Icon(IconlyLight.infoSquare, color: Colors.blue[700], size: 24),
               const SizedBox(width: 12),
               Expanded(
                 child: Text(
@@ -213,16 +214,16 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
 
     switch (type) {
       case 'CNI':
-        icon = Icons.badge_outlined;
+        icon = IconlyLight.profile;
         break;
       case 'Passeport':
-        icon = Icons.card_travel_outlined;
+        icon = IconlyLight.discovery;
         break;
       case 'Permis de conduire':
-        icon = Icons.credit_card_outlined;
+        icon = IconlyLight.wallet;
         break;
       default:
-        icon = Icons.badge_outlined;
+        icon = IconlyLight.profile;
     }
 
     return Container(
@@ -270,7 +271,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                 ),
               ),
               if (isSelected)
-                Icon(Icons.check_circle, color: Colors.blue[700], size: 24),
+                Icon(IconlyBold.tickSquare, color: Colors.blue[700], size: 24),
             ],
           ),
         ),
@@ -331,7 +332,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Icon(
-                        Icons.camera_alt_rounded,
+                        IconlyLight.camera,
                         size: 60,
                         color: Colors.grey[400],
                       ),
@@ -356,7 +357,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
               Expanded(
                 child: OutlinedButton.icon(
                   onPressed: onCapture,
-                  icon: const Icon(Icons.refresh),
+                  icon: const Icon(IconlyLight.swap),
                   label: const Text('Reprendre'),
                 ),
               ),
@@ -370,7 +371,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
                       if (_currentStep == 3) _selfieWithId = null;
                     });
                   },
-                  icon: const Icon(Icons.delete_outline, color: Colors.red),
+                  icon: const Icon(IconlyLight.delete, color: Colors.red),
                   label: const Text('Supprimer', style: TextStyle(color: Colors.red)),
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Colors.red),
@@ -396,7 +397,7 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.tips_and_updates_outlined, color: Colors.amber[900], size: 20),
+                  Icon(IconlyLight.infoSquare, color: Colors.amber[900], size: 20),
                   const SizedBox(width: 8),
                   Text(
                     'Conseils pour une bonne photo',
@@ -532,12 +533,12 @@ class _DocumentUploadScreenState extends State<DocumentUploadScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: const Icon(Icons.camera_alt_rounded, color: Colors.blue),
+              leading: const Icon(IconlyLight.camera, color: Colors.blue),
               title: const Text('Appareil photo'),
               onTap: () => Navigator.pop(context, ImageSource.camera),
             ),
             ListTile(
-              leading: const Icon(Icons.photo_library_rounded, color: Colors.blue),
+              leading: const Icon(IconlyLight.image, color: Colors.blue),
               title: const Text('Galerie'),
               onTap: () => Navigator.pop(context, ImageSource.gallery),
             ),

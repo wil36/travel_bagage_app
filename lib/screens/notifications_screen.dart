@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/notification_detail_screen.dart';
 
 class NotificationModel {
@@ -184,7 +185,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.notifications_off_outlined,
+            IconlyLight.notification,
             size: 80,
             color: Colors.grey[400],
           ),
@@ -220,7 +221,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         padding: const EdgeInsets.only(right: 20),
         color: Colors.red,
         child: const Icon(
-          Icons.delete_outline,
+          IconlyLight.delete,
           color: Colors.white,
           size: 28,
         ),
@@ -333,15 +334,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   IconData _getNotificationIcon(String type) {
     switch (type) {
       case 'message':
-        return Icons.chat_bubble_rounded;
+        return IconlyBold.chat;
       case 'trip':
-        return Icons.flight_takeoff_rounded;
+        return IconlyBold.send;
       case 'package':
-        return Icons.inventory_2_rounded;
+        return IconlyBold.bag;
       case 'system':
-        return Icons.info_rounded;
+        return IconlyBold.infoSquare;
       default:
-        return Icons.notifications_rounded;
+        return IconlyBold.notification;
     }
   }
 

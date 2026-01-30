@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
@@ -34,7 +35,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(IconlyLight.arrowLeft),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -49,7 +50,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Icon(
-                    Icons.lock_reset,
+                    IconlyBold.unlock,
                     size: 80,
                     color: Colors.blue[600],
                   ),
@@ -77,7 +78,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(IconlyLight.message),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {

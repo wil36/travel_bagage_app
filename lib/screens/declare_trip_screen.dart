@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_bagage_app/models/trip_model.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class DeclareTripScreen extends StatefulWidget {
   const DeclareTripScreen({super.key});
@@ -62,20 +62,20 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
         return;
       }
 
-      final trip = TripModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        userId: 'user123',
-        userName: 'John Doe',
-        departureCity: _departureCityController.text,
-        departureCountry: _departureCountryController.text,
-        arrivalCity: _arrivalCityController.text,
-        arrivalCountry: _arrivalCountryController.text,
-        departureDate: _departureDate!,
-        arrivalDate: _arrivalDate!,
-        availableWeight: double.parse(_availableWeightController.text),
-        pricePerKg: double.parse(_pricePerKgController.text),
-        description: _descriptionController.text,
-      );
+      // final trip = TripModel(
+      //   id: DateTime.now().millisecondsSinceEpoch.toString(),
+      //   userId: 'user123',
+      //   userName: 'John Doe',
+      //   departureCity: _departureCityController.text,
+      //   departureCountry: _departureCountryController.text,
+      //   arrivalCity: _arrivalCityController.text,
+      //   arrivalCountry: _arrivalCountryController.text,
+      //   departureDate: _departureDate!,
+      //   arrivalDate: _arrivalDate!,
+      //   availableWeight: double.parse(_availableWeightController.text),
+      //   pricePerKg: double.parse(_pricePerKgController.text),
+      //   description: _descriptionController.text,
+      // );
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -114,7 +114,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Ville de départ',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.location_city),
+                  prefixIcon: Icon(IconlyLight.location),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -129,7 +129,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Pays de départ',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.flag),
+                  prefixIcon: Icon(IconlyLight.discovery),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -145,7 +145,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Date de départ',
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.calendar_today),
+                    prefixIcon: Icon(IconlyLight.calendar),
                   ),
                   child: Text(
                     _departureDate == null
@@ -168,7 +168,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Ville d\'arrivée',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.location_city),
+                  prefixIcon: Icon(IconlyLight.location),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -183,7 +183,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Pays d\'arrivée',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.flag),
+                  prefixIcon: Icon(IconlyLight.discovery),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -199,7 +199,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Date d\'arrivée',
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.calendar_today),
+                    prefixIcon: Icon(IconlyLight.calendar),
                   ),
                   child: Text(
                     _arrivalDate == null
@@ -222,7 +222,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Poids disponible (kg)',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.scale),
+                  prefixIcon: Icon(IconlyLight.bag2),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -241,7 +241,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Prix par kg (€)',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.euro),
+                  prefixIcon: Icon(IconlyLight.wallet),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -260,7 +260,7 @@ class _DeclareTripScreenState extends State<DeclareTripScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Description (optionnel)',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.description),
+                  prefixIcon: Icon(IconlyLight.document),
                 ),
                 maxLines: 3,
               ),

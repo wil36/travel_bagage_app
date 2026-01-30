@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/package_model.dart';
 import 'package:travel_bagage_app/screens/package_details_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
@@ -64,13 +65,13 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
         title: const Text('Colis disponibles'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search_rounded),
+            icon: const Icon(IconlyLight.search),
             onPressed: () {
               _showSearchDialog();
             },
           ),
           IconButton(
-            icon: const Icon(Icons.filter_list),
+            icon: const Icon(IconlyLight.filter),
             onPressed: () {
               _showFilterDialog();
             },
@@ -98,7 +99,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.inventory_2_outlined,
+            IconlyLight.bag,
             size: 80,
             color: Colors.grey[400],
           ),
@@ -170,7 +171,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
-                      Icons.inventory_2_rounded,
+                      IconlyBold.bag,
                       color: Colors.orange[700],
                       size: 20,
                     ),
@@ -246,7 +247,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                     ),
                   ),
                   Icon(
-                    Icons.calendar_today_rounded,
+                    IconlyLight.calendar,
                     size: 14,
                     color: Colors.grey[600],
                   ),
@@ -308,7 +309,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.scale_outlined,
+                            IconlyLight.bag2,
                             size: 16,
                             color: Colors.grey[700],
                           ),
@@ -366,13 +367,13 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
   IconData _getCategoryIcon(String category) {
     switch (category) {
       case 'documents':
-        return Icons.description_outlined;
+        return IconlyLight.document;
       case 'vêtements':
-        return Icons.checkroom_outlined;
+        return IconlyLight.bag;
       case 'électronique':
-        return Icons.devices_outlined;
+        return IconlyLight.activity;
       default:
-        return Icons.category_outlined;
+        return IconlyLight.category;
     }
   }
 
@@ -419,7 +420,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                   controller: departureCityController,
                   decoration: const InputDecoration(
                     labelText: 'Ville de départ',
-                    prefixIcon: Icon(Icons.flight_takeoff_rounded),
+                    prefixIcon: Icon(IconlyLight.send),
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -428,7 +429,7 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                   controller: arrivalCityController,
                   decoration: const InputDecoration(
                     labelText: 'Ville d\'arrivée',
-                    prefixIcon: Icon(Icons.flight_land_rounded),
+                    prefixIcon: Icon(IconlyLight.download),
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -482,43 +483,43 @@ class _PackagesListScreenState extends State<PackagesListScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(IconlyLight.closeSquare),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               ListTile(
-                leading: const Icon(Icons.euro_rounded),
+                leading: const Icon(IconlyLight.wallet),
                 title: const Text('Trier par prix'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement price sorting
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.scale_rounded),
+                leading: const Icon(IconlyLight.bag2),
                 title: const Text('Trier par poids'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement weight sorting
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.calendar_today_rounded),
+                leading: const Icon(IconlyLight.calendar),
                 title: const Text('Trier par date limite'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement date sorting
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.category_rounded),
+                leading: const Icon(IconlyLight.category),
                 title: const Text('Filtrer par catégorie'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement category filter

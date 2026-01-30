@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 import 'package:travel_bagage_app/screens/trip_details_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
@@ -109,7 +110,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                         controller: _departureCityController,
                         decoration: const InputDecoration(
                           hintText: 'Ex: Paris, Lyon...',
-                          prefixIcon: Icon(Icons.flight_takeoff_rounded),
+                          prefixIcon: Icon(IconlyLight.send),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -135,7 +136,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                         controller: _arrivalCityController,
                         decoration: const InputDecoration(
                           hintText: 'Ex: Dakar, Abidjan...',
-                          prefixIcon: Icon(Icons.flight_land_rounded),
+                          prefixIcon: Icon(IconlyLight.download),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -178,7 +179,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                           ),
                           child: Row(
                             children: [
-                              Icon(Icons.calendar_today_rounded, color: Colors.grey[600]),
+                              Icon(IconlyLight.calendar, color: Colors.grey[600]),
                               const SizedBox(width: 16),
                               Text(
                                 _selectedDate == null
@@ -293,7 +294,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                         child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.search_rounded),
+                            Icon(IconlyLight.search),
                             SizedBox(width: 8),
                             Text(
                               'Rechercher',
@@ -392,7 +393,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
-                      Icons.flight_takeoff_rounded,
+                      IconlyBold.send,
                       color: Colors.blue[700],
                       size: 20,
                     ),
@@ -465,7 +466,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                     ),
                   ),
                   Icon(
-                    Icons.calendar_today_rounded,
+                    IconlyLight.calendar,
                     size: 14,
                     color: Colors.grey[600],
                   ),
@@ -494,7 +495,7 @@ class _SearchTripsScreenState extends State<SearchTripsScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.work_outline_rounded,
+                            IconlyLight.bag2,
                             size: 16,
                             color: Colors.grey[700],
                           ),

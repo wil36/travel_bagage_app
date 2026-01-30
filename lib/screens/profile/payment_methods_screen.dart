@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class PaymentMethodsScreen extends StatefulWidget {
   const PaymentMethodsScreen({super.key});
@@ -47,7 +48,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.info_outline, color: Colors.blue[700]),
+                    Icon(IconlyLight.infoSquare, color: Colors.blue[700]),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(
@@ -79,7 +80,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                   child: Column(
                     children: [
                       Icon(
-                        Icons.credit_card_off_rounded,
+                        IconlyLight.wallet,
                         size: 80,
                         color: Colors.grey[400],
                       ),
@@ -108,7 +109,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.add_rounded),
+                    Icon(IconlyLight.plus),
                     SizedBox(width: 8),
                     Text(
                       'Ajouter un moyen de paiement',
@@ -152,7 +153,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
-                  Icons.credit_card_rounded,
+                  IconlyLight.wallet,
                   color: Colors.grey[700],
                   size: 28,
                 ),
@@ -205,14 +206,14 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                 ),
               ),
               PopupMenuButton(
-                icon: Icon(Icons.more_vert, color: Colors.grey[600]),
+                icon: Icon(IconlyLight.moreSquare, color: Colors.grey[600]),
                 itemBuilder: (context) => [
                   if (!method.isDefault)
                     const PopupMenuItem(
                       value: 'default',
                       child: Row(
                         children: [
-                          Icon(Icons.check_circle_outline, size: 20),
+                          Icon(IconlyLight.tickSquare, size: 20),
                           SizedBox(width: 12),
                           Text('Définir par défaut'),
                         ],
@@ -222,7 +223,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
                     value: 'delete',
                     child: Row(
                       children: [
-                        Icon(Icons.delete_outline, size: 20, color: Colors.red),
+                        Icon(IconlyLight.delete, size: 20, color: Colors.red),
                         SizedBox(width: 12),
                         Text('Supprimer', style: TextStyle(color: Colors.red)),
                       ],
@@ -274,7 +275,7 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
               ),
               const SizedBox(height: 24),
               const Icon(
-                Icons.credit_card_rounded,
+                IconlyBold.wallet,
                 size: 60,
                 color: Colors.blue,
               ),

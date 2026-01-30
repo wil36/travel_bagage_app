@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/package_model.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
 
@@ -53,7 +54,7 @@ class PackageDetailsScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Icon(
-                          Icons.arrow_forward_rounded,
+                          IconlyBold.arrowRight,
                           color: Colors.orange[700],
                           size: 28,
                         ),
@@ -147,7 +148,7 @@ class PackageDetailsScreen extends StatelessWidget {
                                 const SizedBox(height: 4),
                                 Row(
                                   children: [
-                                    const Icon(Icons.star, color: Colors.amber, size: 16),
+                                    const Icon(IconlyBold.star, color: Colors.amber, size: 16),
                                     const SizedBox(width: 4),
                                     const Text(
                                       '4.8',
@@ -169,7 +170,7 @@ class PackageDetailsScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          Icon(Icons.chevron_right_rounded, color: Colors.grey[400]),
+                          Icon(IconlyLight.arrowRight2, color: Colors.grey[400]),
                         ],
                       ),
                     ),
@@ -186,11 +187,11 @@ class PackageDetailsScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 12),
-                  _buildInfoRow(Icons.calendar_today_rounded, 'Date souhaitée',
+                  _buildInfoRow(IconlyLight.calendar, 'Date souhaitée',
                       '${package.neededByDate.day}/${package.neededByDate.month}/${package.neededByDate.year}'),
-                  _buildInfoRow(Icons.scale_outlined, 'Poids', '${package.weight} kg'),
-                  _buildInfoRow(Icons.euro_rounded, 'Prix proposé', '${package.offeredPrice} €'),
-                  _buildInfoRow(Icons.category_outlined, 'Catégorie', 
+                  _buildInfoRow(IconlyLight.bag2, 'Poids', '${package.weight} kg'),
+                  _buildInfoRow(IconlyLight.wallet, 'Prix proposé', '${package.offeredPrice} €'),
+                  _buildInfoRow(IconlyLight.category, 'Catégorie', 
                       _getCategoryLabel(package.category)),
 
                   const SizedBox(height: 24),
@@ -235,7 +236,7 @@ class PackageDetailsScreen extends StatelessWidget {
                     child: const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.chat_bubble_outline_rounded),
+                        Icon(IconlyLight.chat),
                         SizedBox(width: 8),
                         Text(
                           'Contacter l\'expéditeur',

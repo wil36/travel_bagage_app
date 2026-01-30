@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 
 class TripDetailsScreen extends StatelessWidget {
@@ -56,7 +57,7 @@ class TripDetailsScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(
-                        Icons.star,
+                        IconlyBold.star,
                         color: Colors.amber,
                         size: 20,
                       ),
@@ -70,7 +71,7 @@ class TripDetailsScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 16),
                       const Icon(
-                        Icons.check_circle,
+                        IconlyBold.tickSquare,
                         color: Colors.white,
                         size: 20,
                       ),
@@ -95,7 +96,7 @@ class TripDetailsScreen extends StatelessWidget {
                   _buildSectionTitle('Itinéraire'),
                   const SizedBox(height: 16),
                   _buildRouteCard(
-                    icon: Icons.flight_takeoff,
+                    icon: IconlyBold.send,
                     label: 'Départ',
                     location: '${trip.departureCity}, ${trip.departureCountry}',
                     date: trip.departureDate,
@@ -103,7 +104,7 @@ class TripDetailsScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   _buildRouteCard(
-                    icon: Icons.flight_land,
+                    icon: IconlyBold.download,
                     label: 'Arrivée',
                     location: '${trip.arrivalCity}, ${trip.arrivalCountry}',
                     date: trip.arrivalDate,
@@ -116,7 +117,7 @@ class TripDetailsScreen extends StatelessWidget {
                     children: [
                       Expanded(
                         child: _buildInfoCard(
-                          icon: Icons.scale,
+                          icon: IconlyBold.bag2,
                           label: 'Poids disponible',
                           value: '${trip.availableWeight} kg',
                         ),
@@ -124,7 +125,7 @@ class TripDetailsScreen extends StatelessWidget {
                       const SizedBox(width: 16),
                       Expanded(
                         child: _buildInfoCard(
-                          icon: Icons.euro,
+                          icon: IconlyBold.wallet,
                           label: 'Prix par kg',
                           value: '${trip.pricePerKg} €',
                         ),
@@ -185,7 +186,7 @@ class TripDetailsScreen extends StatelessWidget {
                     ),
                   );
                 },
-                icon: const Icon(Icons.favorite_border),
+                icon: const Icon(IconlyLight.heart),
                 label: const Text('Sauvegarder'),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.all(16),
@@ -319,7 +320,7 @@ class TripDetailsScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Icon(
-            Icons.check_circle,
+            IconlyBold.tickSquare,
             size: 20,
             color: Colors.green[600],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'dart:async';
 
 class CallScreen extends StatefulWidget {
@@ -159,7 +160,7 @@ class _CallScreenState extends State<CallScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Icons.videocam_outlined,
+              IconlyLight.video,
               size: 80,
               color: Colors.white.withValues(alpha: 0.3),
             ),
@@ -357,8 +358,8 @@ class _CallScreenState extends State<CallScreen> {
             ),
             child: Icon(
               widget.isVideoCall && _isVideoEnabled
-                  ? Icons.videocam
-                  : Icons.phone,
+                  ? IconlyBold.video
+                  : IconlyBold.call,
               color: Colors.white,
               size: 20,
             ),
@@ -417,20 +418,20 @@ class _CallScreenState extends State<CallScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             _buildControlButton(
-              icon: _isMuted ? Icons.mic_off : Icons.mic,
+              icon: _isMuted ? IconlyLight.volumeOff : IconlyBold.voice,
               label: _isMuted ? 'Réactiver' : 'Muet',
               onTap: _toggleMute,
               isActive: _isMuted,
             ),
             if (widget.isVideoCall)
               _buildControlButton(
-                icon: _isVideoEnabled ? Icons.videocam : Icons.videocam_off,
+                icon: _isVideoEnabled ? IconlyBold.video : IconlyLight.video,
                 label: _isVideoEnabled ? 'Caméra' : 'Cam. off',
                 onTap: _toggleVideo,
                 isActive: !_isVideoEnabled,
               ),
             _buildControlButton(
-              icon: _isSpeakerOn ? Icons.volume_up : Icons.volume_down,
+              icon: _isSpeakerOn ? IconlyBold.volumeUp : IconlyBold.volumeDown,
               label: _isSpeakerOn ? 'Haut-parleur' : 'Écouteur',
               onTap: _toggleSpeaker,
               isActive: _isSpeakerOn,
@@ -450,7 +451,7 @@ class _CallScreenState extends State<CallScreen> {
               shape: BoxShape.circle,
             ),
             child: const Icon(
-              Icons.call_end,
+              IconlyBold.calling,
               color: Colors.white,
               size: 32,
             ),
@@ -533,7 +534,7 @@ class _CallScreenState extends State<CallScreen> {
             ),
             Center(
               child: Icon(
-                Icons.person,
+                IconlyBold.profile,
                 size: 50,
                 color: Colors.white.withValues(alpha: 0.5),
               ),

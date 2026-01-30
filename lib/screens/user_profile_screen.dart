@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class UserProfileScreen extends StatefulWidget {
   final String userId;
@@ -44,7 +45,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         title: Text(widget.userName),
         actions: [
           IconButton(
-            icon: const Icon(Icons.more_vert_rounded),
+            icon: const Icon(IconlyLight.moreSquare),
             onPressed: () {
               _showOptionsMenu(context);
             },
@@ -93,7 +94,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.star, color: Colors.amber, size: 20),
+                        const Icon(IconlyBold.star, color: Colors.amber, size: 20),
                         const SizedBox(width: 6),
                         Text(
                           _userRating.toStringAsFixed(1),
@@ -148,7 +149,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 children: [
                   Expanded(
                     child: _buildBadge(
-                      icon: Icons.verified_user,
+                      icon: IconlyBold.shieldDone,
                       label: 'Identité vérifiée',
                       color: Colors.green,
                     ),
@@ -156,7 +157,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: _buildBadge(
-                      icon: Icons.workspace_premium,
+                      icon: IconlyBold.star,
                       label: 'Membre vérifié',
                       color: Colors.blue,
                     ),
@@ -228,7 +229,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.chat_bubble_outline_rounded),
+                    Icon(IconlyLight.chat),
                     SizedBox(width: 8),
                     Text(
                       'Envoyer un message',
@@ -340,7 +341,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             ),
           ),
           const SizedBox(width: 4),
-          const Icon(Icons.star, color: Colors.amber, size: 14),
+          const Icon(IconlyBold.star, color: Colors.amber, size: 14),
           const SizedBox(width: 12),
           Expanded(
             child: ClipRRect(
@@ -540,7 +541,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           ListTile(
-            leading: const Icon(Icons.flag_outlined),
+            leading: const Icon(IconlyLight.infoSquare),
             title: const Text('Signaler ce profil'),
             onTap: () {
               Navigator.pop(context);
@@ -548,7 +549,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.block_outlined),
+            leading: const Icon(IconlyLight.closeSquare),
             title: const Text('Bloquer cet utilisateur'),
             onTap: () {
               Navigator.pop(context);

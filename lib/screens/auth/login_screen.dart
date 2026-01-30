@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/auth/register_screen.dart';
 import 'package:travel_bagage_app/screens/auth/forgot_password_screen.dart';
 import 'package:travel_bagage_app/screens/main_screen.dart';
 import 'package:travel_bagage_app/widgets/google_sign_in_button.dart';
+import 'package:travel_bagage_app/services/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,7 +17,9 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _authService = AuthService();
   bool _obscurePassword = true;
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -24,22 +28,59 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
+  Future<void> _login() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    setState(() => _isLoading = true);
+
+    try {
+      await _authService.signInWithEmail(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
       );
+
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
 
-  void _signInWithGoogle() {
-    // TODO: Implémenter la connexion Google
-    // Pour l'instant, on simule une connexion
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const MainScreen()),
-    );
+  Future<void> _signInWithGoogle() async {
+    setState(() => _isLoading = true);
+
+    try {
+      final user = await _authService.signInWithGoogle();
+
+      if (user != null && mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const MainScreen()),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   @override
@@ -56,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Icon(
-                    Icons.flight_takeoff,
+                    IconlyBold.send,
                     size: 80,
                     color: Colors.blue[600],
                   ),
@@ -84,7 +125,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(IconlyLight.message),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -102,12 +143,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       labelText: 'Mot de passe',
-                      prefixIcon: const Icon(Icons.lock_outlined),
+                      prefixIcon: const Icon(IconlyLight.lock),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
+                              ? IconlyLight.show
+                              : IconlyLight.hide,
                         ),
                         onPressed: () {
                           setState(() {
@@ -143,11 +184,22 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton(
-                    onPressed: _login,
-                    child: const Text(
-                      'Se connecter',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    onPressed: _isLoading ? null : _login,
+                    child: _isLoading
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : const Text(
+                            'Se connecter',
+                            style: TextStyle(fontSize: 16),
+                          ),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -167,9 +219,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  GoogleSignInButton(
-                    onPressed: _signInWithGoogle,
+                  SocialSignInButton(
+                    onPressed: _isLoading ? () {} : _signInWithGoogle,
                     label: 'Continuer avec Google',
+                    pathImage: 'assets/images/icons8-google-96.png',
+                  ),
+                  const SizedBox(height: 24),
+                  SocialSignInButton(
+                    onPressed: _isLoading ? () {} : _signInWithGoogle,
+                    label: 'Continuer avec Apple',
+                    pathImage: 'assets/images/icons8-apple-inc.svg',
                   ),
                   const SizedBox(height: 24),
                   Row(

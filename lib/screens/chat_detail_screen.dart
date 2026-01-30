@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
 import 'package:travel_bagage_app/screens/call_screen.dart';
 
@@ -201,13 +202,13 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.phone_outlined),
+            icon: const Icon(IconlyLight.call),
             onPressed: () {
               _showCallOptions();
             },
           ),
           IconButton(
-            icon: const Icon(Icons.more_vert),
+            icon: const Icon(IconlyLight.moreSquare),
             onPressed: () {
               _showOptionsMenu();
             },
@@ -343,7 +344,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             const SizedBox(width: 8),
             // Indicateur de lecture (optionnel)
             Icon(
-              Icons.done_all,
+              IconlyBold.tickSquare,
               size: 16,
               color: Colors.blue[300],
             ),
@@ -371,7 +372,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
           children: [
             // Bouton pièce jointe
             IconButton(
-              icon: Icon(Icons.attach_file_rounded, color: Colors.grey[600]),
+              icon: Icon(IconlyLight.paperUpload, color: Colors.grey[600]),
               onPressed: () {
                 // TODO: Implement attachment functionality
               },
@@ -406,7 +407,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 shape: BoxShape.circle,
               ),
               child: IconButton(
-                icon: const Icon(Icons.send_rounded, color: Colors.white),
+                icon: const Icon(IconlyBold.send, color: Colors.white),
                 onPressed: _sendMessage,
               ),
             ),
@@ -441,7 +442,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: const Icon(Icons.phone, color: Colors.blue),
+                leading: const Icon(IconlyBold.call, color: Colors.blue),
                 title: const Text('Appel vocal'),
                 subtitle: const Text('Passer un appel vocal'),
                 onTap: () {
@@ -459,7 +460,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.videocam, color: Colors.blue),
+                leading: const Icon(IconlyBold.video, color: Colors.blue),
                 title: const Text('Appel vidéo'),
                 subtitle: const Text('Passer un appel vidéo'),
                 onTap: () {
@@ -495,7 +496,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ListTile(
-                leading: const Icon(Icons.person_outline),
+                leading: const Icon(IconlyLight.profile),
                 title: const Text('Voir le profil'),
                 onTap: () {
                   Navigator.pop(context);
@@ -511,7 +512,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.volume_off_outlined),
+                leading: const Icon(IconlyLight.volumeOff),
                 title: const Text('Désactiver les notifications'),
                 onTap: () {
                   Navigator.pop(context);
@@ -519,7 +520,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.block_outlined),
+                leading: const Icon(IconlyLight.closeSquare),
                 title: const Text('Bloquer l\'utilisateur'),
                 onTap: () {
                   Navigator.pop(context);
@@ -527,7 +528,7 @@ class _ChatDetailScreenState extends State<ChatDetailScreen> {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.delete_outline, color: Colors.red),
+                leading: const Icon(IconlyLight.delete, color: Colors.red),
                 title: const Text(
                   'Supprimer la conversation',
                   style: TextStyle(color: Colors.red),

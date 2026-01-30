@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
@@ -48,7 +49,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               const SizedBox(height: 16),
 
               _buildNotificationToggle(
-                icon: Icons.email_outlined,
+                icon: IconlyLight.message,
                 title: 'Email',
                 subtitle: 'Recevoir des notifications par email',
                 value: _emailNotifications,
@@ -58,7 +59,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const SizedBox(height: 12),
               _buildNotificationToggle(
-                icon: Icons.notifications_outlined,
+                icon: IconlyLight.notification,
                 title: 'Notifications push',
                 subtitle: 'Recevoir des notifications push',
                 value: _pushNotifications,
@@ -68,7 +69,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const SizedBox(height: 12),
               _buildNotificationToggle(
-                icon: Icons.sms_outlined,
+                icon: IconlyLight.chat,
                 title: 'SMS',
                 subtitle: 'Recevoir des notifications par SMS',
                 value: _smsNotifications,
@@ -98,7 +99,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               const SizedBox(height: 16),
 
               _buildNotificationToggle(
-                icon: Icons.flight_takeoff_rounded,
+                icon: IconlyLight.send,
                 title: 'Mises à jour de voyage',
                 subtitle: 'Changements et rappels de voyage',
                 value: _tripUpdates,
@@ -108,7 +109,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const SizedBox(height: 12),
               _buildNotificationToggle(
-                icon: Icons.chat_bubble_outline_rounded,
+                icon: IconlyLight.chat,
                 title: 'Messages',
                 subtitle: 'Nouveaux messages et réponses',
                 value: _messages,
@@ -118,7 +119,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const SizedBox(height: 12),
               _buildNotificationToggle(
-                icon: Icons.confirmation_number_outlined,
+                icon: IconlyLight.ticket,
                 title: 'Confirmations de réservation',
                 subtitle: 'Confirmations et rappels de réservation',
                 value: _bookingConfirmations,
@@ -128,7 +129,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
               const SizedBox(height: 12),
               _buildNotificationToggle(
-                icon: Icons.local_offer_outlined,
+                icon: IconlyLight.discount,
                 title: 'Promotions et offres',
                 subtitle: 'Offres spéciales et réductions',
                 value: _promotions,

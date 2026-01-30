@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 import 'package:travel_bagage_app/models/package_model.dart';
 import 'package:travel_bagage_app/screens/trip_details_screen.dart';
@@ -268,7 +269,7 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen>
                   Expanded(
                     child: Row(
                       children: [
-                        Icon(Icons.flight_takeoff, size: 20, color: Colors.grey[600]),
+                        Icon(IconlyLight.send, size: 20, color: Colors.grey[600]),
                         const SizedBox(width: 8),
                         Expanded(
                           child: Text(
@@ -329,7 +330,7 @@ class _ActivitySummaryScreenState extends State<ActivitySummaryScreen>
                   Expanded(
                     child: Row(
                       children: [
-                        Icon(Icons.inventory_2_outlined,
+                        Icon(IconlyLight.bag,
                             size: 20, color: Colors.grey[600]),
                         const SizedBox(width: 8),
                         Expanded(

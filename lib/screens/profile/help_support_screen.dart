@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class HelpSupportScreen extends StatelessWidget {
   const HelpSupportScreen({super.key});
@@ -26,7 +27,7 @@ class HelpSupportScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               _buildContactCard(
-                icon: Icons.email_outlined,
+                icon: IconlyLight.message,
                 title: 'Email',
                 subtitle: 'support@travelbagage.com',
                 color: Colors.blue,
@@ -36,7 +37,7 @@ class HelpSupportScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               _buildContactCard(
-                icon: Icons.phone_outlined,
+                icon: IconlyLight.call,
                 title: 'Téléphone',
                 subtitle: '+33 1 23 45 67 89',
                 color: Colors.green,
@@ -46,7 +47,7 @@ class HelpSupportScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               _buildContactCard(
-                icon: Icons.chat_bubble_outline_rounded,
+                icon: IconlyLight.chat,
                 title: 'Chat en direct',
                 subtitle: 'Discutez avec un agent',
                 color: Colors.purple,
@@ -105,7 +106,7 @@ class HelpSupportScreen extends StatelessWidget {
               const SizedBox(height: 16),
 
               _buildResourceItem(
-                icon: Icons.menu_book_rounded,
+                icon: IconlyLight.paper,
                 title: 'Guide d\'utilisation',
                 onTap: () {
                   // TODO: Ouvrir le guide
@@ -113,7 +114,7 @@ class HelpSupportScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               _buildResourceItem(
-                icon: Icons.video_library_rounded,
+                icon: IconlyLight.video,
                 title: 'Tutoriels vidéo',
                 onTap: () {
                   // TODO: Ouvrir les tutoriels
@@ -121,7 +122,7 @@ class HelpSupportScreen extends StatelessWidget {
               ),
               const SizedBox(height: 12),
               _buildResourceItem(
-                icon: Icons.people_outline_rounded,
+                icon: IconlyLight.user3,
                 title: 'Communauté',
                 onTap: () {
                   // TODO: Ouvrir la communauté
@@ -186,7 +187,7 @@ class HelpSupportScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.chevron_right_rounded, color: Colors.grey[400]),
+            Icon(IconlyLight.arrowRight2, color: Colors.grey[400]),
           ],
         ),
       ),
@@ -268,7 +269,7 @@ class HelpSupportScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Icon(Icons.chevron_right_rounded, color: Colors.grey[400]),
+            Icon(IconlyLight.arrowRight2, color: Colors.grey[400]),
           ],
         ),
       ),

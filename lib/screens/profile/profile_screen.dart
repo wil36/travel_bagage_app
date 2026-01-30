@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/profile/activity_summary_screen.dart';
 import 'package:travel_bagage_app/screens/profile/edit_profile_screen.dart';
 import 'package:travel_bagage_app/screens/profile/identity_verification_screen.dart';
@@ -69,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(
-                        Icons.star,
+                        IconlyBold.star,
                         color: Colors.amber,
                         size: 20,
                       ),
@@ -83,7 +84,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       const SizedBox(width: 16),
                       Icon(
-                        Icons.check_circle,
+                        IconlyBold.tickSquare,
                         color: Colors.green[600],
                         size: 20,
                       ),
@@ -103,7 +104,7 @@ class ProfileScreen extends StatelessWidget {
             const SizedBox(height: 8),
             _buildMenuItem(
               context,
-              icon: Icons.edit_outlined,
+              icon: IconlyLight.edit,
               title: 'Modifier le profil',
               onTap: () {
                 Navigator.push(
@@ -116,7 +117,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.history,
+              icon: IconlyLight.timeCircle,
               title: 'Résumé d\'activités',
               onTap: () {
                 Navigator.push(
@@ -129,7 +130,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.verified_user_outlined,
+              icon: IconlyLight.shieldDone,
               title: 'Vérification d\'identité',
               onTap: () {
                 Navigator.push(
@@ -142,7 +143,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.payment_outlined,
+              icon: IconlyLight.wallet,
               title: 'Moyens de paiement',
               onTap: () {
                 Navigator.push(
@@ -155,7 +156,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.notifications_outlined,
+              icon: IconlyLight.notification,
               title: 'Notifications',
               onTap: () {
                 Navigator.push(
@@ -168,7 +169,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.security_outlined,
+              icon: IconlyLight.lock,
               title: 'Sécurité',
               onTap: () {
                 // TODO: Navigate to security settings
@@ -176,7 +177,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.help_outline,
+              icon: IconlyLight.infoSquare,
               title: 'Aide et support',
               onTap: () {
                 Navigator.push(
@@ -189,7 +190,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.description_outlined,
+              icon: IconlyLight.document,
               title: 'Conditions d\'utilisation',
               onTap: () {
                 Navigator.push(
@@ -202,7 +203,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             _buildMenuItem(
               context,
-              icon: Icons.privacy_tip_outlined,
+              icon: IconlyLight.shieldFail,
               title: 'Politique de confidentialité',
               onTap: () {
                 Navigator.push(
@@ -282,7 +283,7 @@ class ProfileScreen extends StatelessWidget {
       child: ListTile(
         leading: Icon(icon, color: Colors.grey[700]),
         title: Text(title),
-        trailing: Icon(Icons.chevron_right, color: Colors.grey[400]),
+        trailing: Icon(IconlyLight.arrowRight2, color: Colors.grey[400]),
         onTap: onTap,
       ),
     );

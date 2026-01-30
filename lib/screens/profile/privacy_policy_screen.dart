@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class PrivacyPolicyScreen extends StatelessWidget {
   const PrivacyPolicyScreen({super.key});
@@ -93,7 +94,7 @@ class PrivacyPolicyScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.verified_user_outlined, color: Colors.green[700]),
+                    Icon(IconlyLight.shieldDone, color: Colors.green[700]),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(

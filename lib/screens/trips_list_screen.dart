@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 import 'package:travel_bagage_app/screens/trip_details_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
@@ -65,7 +66,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
         title: const Text('Voyages disponibles'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search_rounded),
+            icon: const Icon(IconlyLight.search),
             onPressed: () {
               Navigator.push(
                 context,
@@ -76,7 +77,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.filter_list),
+            icon: const Icon(IconlyLight.filter),
             onPressed: () {
               _showFilterDialog();
             },
@@ -104,7 +105,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.flight_takeoff,
+            IconlyLight.send,
             size: 80,
             color: Colors.grey[400],
           ),
@@ -178,7 +179,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: Icon(
-                      Icons.flight_takeoff_rounded,
+                      IconlyBold.send,
                       color: Colors.blue[700],
                       size: 20,
                     ),
@@ -262,7 +263,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
 
                   // Date
                   Icon(
-                    Icons.calendar_today_rounded,
+                    IconlyLight.calendar,
                     size: 14,
                     color: Colors.grey[600],
                   ),
@@ -298,7 +299,7 @@ class _TripsListScreenState extends State<TripsListScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            Icons.work_outline_rounded,
+                            IconlyLight.bag2,
                             size: 16,
                             color: Colors.grey[700],
                           ),
@@ -368,34 +369,34 @@ class _TripsListScreenState extends State<TripsListScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.close),
+                    icon: const Icon(IconlyLight.closeSquare),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
               const SizedBox(height: 16),
               ListTile(
-                leading: const Icon(Icons.sort_rounded),
+                leading: const Icon(IconlyLight.swap),
                 title: const Text('Trier par prix'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement price sorting
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.calendar_today_rounded),
+                leading: const Icon(IconlyLight.calendar),
                 title: const Text('Trier par date'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement date sorting
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.scale_rounded),
+                leading: const Icon(IconlyLight.bag2),
                 title: const Text('Trier par poids disponible'),
-                trailing: const Icon(Icons.chevron_right),
+                trailing: const Icon(IconlyLight.arrowRight2),
                 onTap: () {
                   Navigator.pop(context);
                   // TODO: Implement weight sorting

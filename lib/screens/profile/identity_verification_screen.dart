@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/profile/document_upload_screen.dart';
 
 class IdentityVerificationScreen extends StatefulWidget {
@@ -36,7 +37,7 @@ class _IdentityVerificationScreenState extends State<IdentityVerificationScreen>
                 child: Row(
                   children: [
                     Icon(
-                      _isVerified ? Icons.verified : Icons.warning_rounded,
+                      _isVerified ? IconlyBold.shieldDone : IconlyBold.danger,
                       color: _isVerified ? Colors.green : Colors.orange,
                       size: 32,
                     ),
@@ -82,19 +83,19 @@ class _IdentityVerificationScreenState extends State<IdentityVerificationScreen>
               ),
               const SizedBox(height: 16),
               _buildBenefitItem(
-                icon: Icons.security_rounded,
+                icon: IconlyLight.shieldDone,
                 title: 'Sécurité renforcée',
                 description: 'Protégez votre compte et vos transactions',
               ),
               const SizedBox(height: 12),
               _buildBenefitItem(
-                icon: Icons.star_rounded,
+                icon: IconlyLight.star,
                 title: 'Confiance accrue',
                 description: 'Les utilisateurs vous feront plus confiance',
               ),
               const SizedBox(height: 12),
               _buildBenefitItem(
-                icon: Icons.workspace_premium_rounded,
+                icon: IconlyLight.discovery,
                 title: 'Accès complet',
                 description: 'Débloquez toutes les fonctionnalités premium',
               ),
@@ -111,14 +112,14 @@ class _IdentityVerificationScreenState extends State<IdentityVerificationScreen>
               ),
               const SizedBox(height: 16),
               _buildDocumentItem(
-                icon: Icons.badge_outlined,
+                icon: IconlyLight.profile,
                 title: 'Pièce d\'identité',
                 description: 'CNI, Passeport ou Permis de conduire',
                 isUploaded: false,
               ),
               const SizedBox(height: 12),
               _buildDocumentItem(
-                icon: Icons.person_pin_outlined,
+                icon: IconlyLight.camera,
                 title: 'Selfie avec votre pièce',
                 description: 'Pour confirmer votre identité',
                 isUploaded: false,
@@ -245,7 +246,7 @@ class _IdentityVerificationScreenState extends State<IdentityVerificationScreen>
             ),
           ),
           Icon(
-            isUploaded ? Icons.check_circle : Icons.upload_file_rounded,
+            isUploaded ? IconlyBold.tickSquare : IconlyLight.upload,
             color: isUploaded ? Colors.green : Colors.grey[400],
           ),
         ],

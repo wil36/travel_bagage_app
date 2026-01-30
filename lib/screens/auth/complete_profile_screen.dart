@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/main_screen.dart';
 
 class CompleteProfileScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                             : null,
                         child: widget.photoUrl == null
                             ? Icon(
-                                Icons.person,
+                                IconlyBold.profile,
                                 size: 50,
                                 color: Colors.blue[900],
                               )
@@ -93,7 +94,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                           ),
                           child: IconButton(
                             icon: const Icon(
-                              Icons.camera_alt,
+                              IconlyLight.camera,
                               color: Colors.white,
                               size: 20,
                             ),
@@ -119,7 +120,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   controller: _nameController,
                   decoration: const InputDecoration(
                     labelText: 'Nom complet',
-                    prefixIcon: Icon(Icons.person_outlined),
+                    prefixIcon: Icon(IconlyLight.profile),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -134,7 +135,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   enabled: false,
                   decoration: const InputDecoration(
                     labelText: 'Email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: Icon(IconlyLight.message),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -143,7 +144,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     labelText: 'Téléphone',
-                    prefixIcon: Icon(Icons.phone_outlined),
+                    prefixIcon: Icon(IconlyLight.call),
                     hintText: '+33 6 12 34 56 78',
                   ),
                   validator: (value) {
@@ -166,7 +167,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   controller: _addressController,
                   decoration: const InputDecoration(
                     labelText: 'Adresse complète',
-                    prefixIcon: Icon(Icons.home_outlined),
+                    prefixIcon: Icon(IconlyLight.home),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -183,7 +184,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         controller: _cityController,
                         decoration: const InputDecoration(
                           labelText: 'Ville',
-                          prefixIcon: Icon(Icons.location_city_outlined),
+                          prefixIcon: Icon(IconlyLight.location),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
@@ -199,7 +200,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                         controller: _countryController,
                         decoration: const InputDecoration(
                           labelText: 'Pays',
-                          prefixIcon: Icon(Icons.flag_outlined),
+                          prefixIcon: Icon(IconlyLight.discovery),
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {

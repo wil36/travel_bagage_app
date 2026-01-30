@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/chat_detail_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
 import 'package:travel_bagage_app/widgets/bottom_nav_spacer.dart';
@@ -82,7 +83,7 @@ class _MessagesListScreenState extends State<MessagesListScreen> {
         title: const Text('Messages'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.search_rounded),
+            icon: const Icon(IconlyLight.search),
             onPressed: () {
               // TODO: Implement search functionality
             },
@@ -110,7 +111,7 @@ class _MessagesListScreenState extends State<MessagesListScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
-            Icons.chat_bubble_outline_rounded,
+            IconlyLight.chat,
             size: 100,
             color: Colors.grey[300],
           ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/models/trip_model.dart';
 import 'package:travel_bagage_app/screens/trip_details_screen.dart';
 
@@ -168,7 +169,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     controller: _departureCityController,
                     decoration: const InputDecoration(
                       labelText: 'Ville de départ',
-                      prefixIcon: Icon(Icons.flight_takeoff),
+                      prefixIcon: Icon(IconlyLight.send),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -176,7 +177,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     controller: _arrivalCityController,
                     decoration: const InputDecoration(
                       labelText: 'Ville d\'arrivée',
-                      prefixIcon: Icon(Icons.flight_land),
+                      prefixIcon: Icon(IconlyLight.download),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -185,7 +186,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: InputDecorator(
                       decoration: const InputDecoration(
                         labelText: 'Date de départ souhaitée',
-                        prefixIcon: Icon(Icons.calendar_today),
+                        prefixIcon: Icon(IconlyLight.calendar),
                       ),
                       child: Text(
                         _selectedDate == null
@@ -269,7 +270,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           child: Column(
                             children: [
                               Icon(
-                                Icons.search_off,
+                                IconlyLight.search,
                                 size: 64,
                                 color: Colors.grey[400],
                               ),
@@ -395,7 +396,7 @@ class _SearchScreenState extends State<SearchScreen> {
               const SizedBox(height: 12),
               Row(
                 children: [
-                  Icon(Icons.flight_takeoff, size: 18, color: Colors.grey[600]),
+                  Icon(IconlyLight.send, size: 18, color: Colors.grey[600]),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text('${trip.departureCity}, ${trip.departureCountry}'),
@@ -405,7 +406,7 @@ class _SearchScreenState extends State<SearchScreen> {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Icon(Icons.flight_land, size: 18, color: Colors.grey[600]),
+                  Icon(IconlyLight.download, size: 18, color: Colors.grey[600]),
                   const SizedBox(width: 8),
                   Expanded(
                     child: Text('${trip.arrivalCity}, ${trip.arrivalCountry}'),
@@ -415,7 +416,7 @@ class _SearchScreenState extends State<SearchScreen> {
               const SizedBox(height: 8),
               Row(
                 children: [
-                  Icon(Icons.calendar_today, size: 16, color: Colors.grey[600]),
+                  Icon(IconlyLight.calendar, size: 16, color: Colors.grey[600]),
                   const SizedBox(width: 8),
                   Text(
                     '${trip.departureDate.day}/${trip.departureDate.month}/${trip.departureDate.year}',

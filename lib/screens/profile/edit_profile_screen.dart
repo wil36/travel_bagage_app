@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
@@ -73,7 +74,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 const SizedBox(height: 20),
                 ListTile(
                   leading: const Icon(
-                    Icons.photo_library_rounded,
+                    IconlyLight.image,
                     color: Colors.blue,
                   ),
                   title: const Text('Galerie'),
@@ -84,7 +85,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 ListTile(
                   leading: const Icon(
-                    Icons.camera_alt_rounded,
+                    IconlyLight.camera,
                     color: Colors.blue,
                   ),
                   title: const Text('Appareil photo'),
@@ -105,6 +106,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       }
                     } catch (e) {
                       if (mounted) {
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
@@ -120,7 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 if (_profileImage != null)
                   ListTile(
                     leading: const Icon(
-                      Icons.delete_rounded,
+                      IconlyLight.delete,
                       color: Colors.red,
                     ),
                     title: const Text('Supprimer la photo'),
@@ -185,7 +187,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                               border: Border.all(color: Colors.white, width: 3),
                             ),
                             child: const Icon(
-                              Icons.camera_alt_rounded,
+                              IconlyLight.camera,
                               size: 20,
                               color: Colors.white,
                             ),
@@ -212,7 +214,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   controller: _nameController,
                   decoration: const InputDecoration(
                     hintText: 'Entrez votre nom complet',
-                    prefixIcon: Icon(Icons.person_outline_rounded),
+                    prefixIcon: Icon(IconlyLight.profile),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -239,7 +241,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   keyboardType: TextInputType.emailAddress,
                   decoration: const InputDecoration(
                     hintText: 'Entrez votre email',
-                    prefixIcon: Icon(Icons.email_outlined),
+                    prefixIcon: Icon(IconlyLight.message),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
@@ -269,7 +271,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                   keyboardType: TextInputType.phone,
                   decoration: const InputDecoration(
                     hintText: 'Entrez votre numéro de téléphone',
-                    prefixIcon: Icon(Icons.phone_outlined),
+                    prefixIcon: Icon(IconlyLight.call),
                   ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {

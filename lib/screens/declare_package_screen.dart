@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:travel_bagage_app/models/package_model.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class DeclarePackageScreen extends StatefulWidget {
   const DeclarePackageScreen({super.key});
@@ -67,20 +67,20 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
         return;
       }
 
-      final package = PackageModel(
-        id: DateTime.now().millisecondsSinceEpoch.toString(),
-        senderId: 'user456',
-        senderName: 'Jane Smith',
-        departureCity: _departureCityController.text,
-        departureCountry: _departureCountryController.text,
-        arrivalCity: _arrivalCityController.text,
-        arrivalCountry: _arrivalCountryController.text,
-        weight: double.parse(_weightController.text),
-        description: _descriptionController.text,
-        category: _selectedCategory,
-        offeredPrice: double.parse(_offeredPriceController.text),
-        neededByDate: _neededByDate!,
-      );
+      // final package = PackageModel(
+      //   id: DateTime.now().millisecondsSinceEpoch.toString(),
+      //   senderId: 'user456',
+      //   senderName: 'Jane Smith',
+      //   departureCity: _departureCityController.text,
+      //   departureCountry: _departureCountryController.text,
+      //   arrivalCity: _arrivalCityController.text,
+      //   arrivalCountry: _arrivalCountryController.text,
+      //   weight: double.parse(_weightController.text),
+      //   description: _descriptionController.text,
+      //   category: _selectedCategory,
+      //   offeredPrice: double.parse(_offeredPriceController.text),
+      //   neededByDate: _neededByDate!,
+      // );
 
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -119,7 +119,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Ville de départ',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.location_city),
+                  prefixIcon: Icon(IconlyLight.location),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -134,7 +134,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Pays de départ',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.flag),
+                  prefixIcon: Icon(IconlyLight.discovery),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -157,7 +157,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Ville d\'arrivée',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.location_city),
+                  prefixIcon: Icon(IconlyLight.location),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -172,7 +172,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Pays d\'arrivée',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.flag),
+                  prefixIcon: Icon(IconlyLight.discovery),
                 ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -195,7 +195,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Catégorie',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.category),
+                  prefixIcon: Icon(IconlyLight.category),
                 ),
                 items: _categories.map((String category) {
                   return DropdownMenuItem<String>(
@@ -217,7 +217,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Poids (kg)',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.scale),
+                  prefixIcon: Icon(IconlyLight.bag2),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -236,7 +236,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Prix proposé (€)',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.euro),
+                  prefixIcon: Icon(IconlyLight.wallet),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (value) {
@@ -256,7 +256,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                   decoration: const InputDecoration(
                     labelText: 'Date limite de livraison',
                     border: OutlineInputBorder(),
-                    prefixIcon: Icon(Icons.calendar_today),
+                    prefixIcon: Icon(IconlyLight.calendar),
                   ),
                   child: Text(
                     _neededByDate == null
@@ -271,7 +271,7 @@ class _DeclarePackageScreenState extends State<DeclarePackageScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Description du colis',
                   border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.description),
+                  prefixIcon: Icon(IconlyLight.document),
                 ),
                 maxLines: 3,
                 validator: (value) {

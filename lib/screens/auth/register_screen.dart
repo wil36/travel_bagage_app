@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/auth/complete_profile_screen.dart';
-import 'package:travel_bagage_app/screens/main_screen.dart';
 import 'package:travel_bagage_app/widgets/google_sign_in_button.dart';
+import 'package:travel_bagage_app/services/auth_service.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -17,9 +18,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
+  final _authService = AuthService();
   bool _obscurePassword = true;
   bool _obscureConfirmPassword = true;
   bool _acceptTerms = false;
+  bool _isLoading = false;
 
   @override
   void dispose() {
@@ -31,36 +34,82 @@ class _RegisterScreenState extends State<RegisterScreen> {
     super.dispose();
   }
 
-  void _register() {
-    if (_formKey.currentState!.validate()) {
-      if (!_acceptTerms) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Veuillez accepter les conditions d\'utilisation'),
+  Future<void> _register() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    if (!_acceptTerms) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Veuillez accepter les conditions d\'utilisation'),
+        ),
+      );
+      return;
+    }
+
+    setState(() => _isLoading = true);
+
+    try {
+      await _authService.registerWithEmail(
+        email: _emailController.text.trim(),
+        password: _passwordController.text,
+      );
+
+      if (mounted) {
+        // Rediriger vers l'écran de complétion de profil avec les infos
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CompleteProfileScreen(
+              email: _emailController.text.trim(),
+              name: _nameController.text,
+              photoUrl: null,
+            ),
           ),
         );
-        return;
       }
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const MainScreen()),
-      );
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
     }
   }
 
-  void _signUpWithGoogle() {
-    // TODO: Implémenter l'inscription avec Google
-    // Après l'authentification Google, on redirige vers la complétion de profil
-    Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(
-        builder: (context) => const CompleteProfileScreen(
-          email: 'user@gmail.com', // Email récupéré de Google
-          name: 'John Doe', // Nom récupéré de Google
-          photoUrl: null, // Photo de profil Google si disponible
-        ),
-      ),
-    );
+  Future<void> _signUpWithGoogle() async {
+    setState(() => _isLoading = true);
+
+    try {
+      final user = await _authService.signInWithGoogle();
+
+      if (user != null && mounted) {
+        // Rediriger vers l'écran de complétion de profil avec les infos Google
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CompleteProfileScreen(
+              email: user['email'] ?? '',
+              name: user['name'] ?? '',
+              photoUrl: user['photoUrl'],
+            ),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()), backgroundColor: Colors.red),
+        );
+      }
+    } finally {
+      if (mounted) {
+        setState(() => _isLoading = false);
+      }
+    }
   }
 
   @override
@@ -68,7 +117,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(IconlyLight.arrowLeft),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -103,7 +152,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     controller: _nameController,
                     decoration: const InputDecoration(
                       labelText: 'Nom complet',
-                      prefixIcon: Icon(Icons.person_outlined),
+                      prefixIcon: Icon(IconlyLight.profile),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -118,7 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     keyboardType: TextInputType.emailAddress,
                     decoration: const InputDecoration(
                       labelText: 'Email',
-                      prefixIcon: Icon(Icons.email_outlined),
+                      prefixIcon: Icon(IconlyLight.message),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -136,7 +185,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
                       labelText: 'Téléphone',
-                      prefixIcon: Icon(Icons.phone_outlined),
+                      prefixIcon: Icon(IconlyLight.call),
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -151,12 +200,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     obscureText: _obscurePassword,
                     decoration: InputDecoration(
                       labelText: 'Mot de passe',
-                      prefixIcon: const Icon(Icons.lock_outlined),
+                      prefixIcon: const Icon(IconlyLight.lock),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscurePassword
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
+                              ? IconlyLight.show
+                              : IconlyLight.hide,
                         ),
                         onPressed: () {
                           setState(() {
@@ -181,12 +230,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     obscureText: _obscureConfirmPassword,
                     decoration: InputDecoration(
                       labelText: 'Confirmer le mot de passe',
-                      prefixIcon: const Icon(Icons.lock_outlined),
+                      prefixIcon: const Icon(IconlyLight.lock),
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscureConfirmPassword
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined,
+                              ? IconlyLight.show
+                              : IconlyLight.hide,
                         ),
                         onPressed: () {
                           setState(() {
@@ -229,11 +278,22 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   const SizedBox(height: 24),
                   ElevatedButton(
-                    onPressed: _register,
-                    child: const Text(
-                      'S\'inscrire',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    onPressed: _isLoading ? null : _register,
+                    child: _isLoading
+                        ? const SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          )
+                        : const Text(
+                            'S\'inscrire',
+                            style: TextStyle(fontSize: 16),
+                          ),
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -253,9 +313,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  GoogleSignInButton(
-                    onPressed: _signUpWithGoogle,
+                  SocialSignInButton(
+                    onPressed: _isLoading ? () {} : _signUpWithGoogle,
                     label: 'S\'inscrire avec Google',
+                    pathImage: 'assets/images/icons8-google-96.png',
+                  ),
+                  const SizedBox(height: 16),
+                  SocialSignInButton(
+                    onPressed: _isLoading ? () {} : _signUpWithGoogle,
+                    label: 'S\'inscrire avec Apple',
+                    pathImage: 'assets/images/icons8-apple-inc.svg',
                   ),
                   const SizedBox(height: 16),
                   Row(

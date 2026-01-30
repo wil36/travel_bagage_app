@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class GlassBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -43,27 +44,32 @@ class GlassBottomNavBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildNavItem(
-                  icon: Icons.home_rounded,
+                  icon: IconlyLight.home,
+                  activeIcon: IconlyBold.home,
                   label: 'Accueil',
                   index: 0,
                 ),
                 _buildNavItem(
-                  icon: Icons.flight_takeoff_rounded,
+                  icon: IconlyLight.send,
+                  activeIcon: IconlyBold.send,
                   label: 'Voyages',
                   index: 1,
                 ),
                 _buildNavItem(
-                  icon: Icons.inventory_2_rounded,
+                  icon: IconlyLight.bag,
+                  activeIcon: IconlyBold.bag,
                   label: 'Colis',
                   index: 2,
                 ),
                 _buildNavItem(
-                  icon: Icons.chat_bubble_rounded,
+                  icon: IconlyLight.chat,
+                  activeIcon: IconlyBold.chat,
                   label: 'Messages',
                   index: 3,
                 ),
                 _buildNavItem(
-                  icon: Icons.person_rounded,
+                  icon: IconlyLight.profile,
+                  activeIcon: IconlyBold.profile,
                   label: 'Profil',
                   index: 4,
                 ),
@@ -77,6 +83,7 @@ class GlassBottomNavBar extends StatelessWidget {
 
   Widget _buildNavItem({
     required IconData icon,
+    required IconData activeIcon,
     required String label,
     required int index,
   }) {
@@ -101,23 +108,23 @@ class GlassBottomNavBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
-                  icon,
+                  isSelected ? activeIcon : icon,
                   color: isSelected ? Colors.blue : Colors.grey[600],
                   size: 26,
                 ),
               ),
               const SizedBox(height: 4),
-              Visibility(
-                visible: isSelected,
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    fontSize: 11,
-                    fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
-                    color: isSelected ? Colors.blue : Colors.grey[600],
-                  ),
-                ),
-              ),
+              // Visibility(
+              //   visible: isSelected,
+              //   child: Text(
+              //     label,
+              //     style: TextStyle(
+              //       fontSize: 11,
+              //       fontWeight: isSelected ? FontWeight.w600 : FontWeight.w500,
+              //       color: isSelected ? Colors.blue : Colors.grey[600],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

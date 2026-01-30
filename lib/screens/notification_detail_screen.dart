@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/notifications_screen.dart';
 
 class NotificationDetailScreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class NotificationDetailScreen extends StatelessWidget {
         title: const Text('Détail de la notification'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.delete_outline),
+            icon: const Icon(IconlyLight.delete),
             onPressed: () {
               _showDeleteDialog(context);
             },
@@ -101,7 +102,7 @@ class NotificationDetailScreen extends StatelessWidget {
                   Row(
                     children: [
                       Icon(
-                        Icons.access_time_rounded,
+                        IconlyLight.timeCircle,
                         size: 16,
                         color: Colors.grey[600],
                       ),
@@ -186,7 +187,7 @@ class NotificationDetailScreen extends StatelessWidget {
           Row(
             children: [
               Icon(
-                Icons.chat_bubble_rounded,
+                IconlyBold.chat,
                 color: Colors.blue[700],
                 size: 20,
               ),
@@ -230,7 +231,7 @@ class NotificationDetailScreen extends StatelessWidget {
           Row(
             children: [
               Icon(
-                Icons.flight_takeoff_rounded,
+                IconlyBold.send,
                 color: Colors.green[700],
                 size: 20,
               ),
@@ -274,7 +275,7 @@ class NotificationDetailScreen extends StatelessWidget {
           Row(
             children: [
               Icon(
-                Icons.inventory_2_rounded,
+                IconlyBold.bag,
                 color: Colors.orange[700],
                 size: 20,
               ),
@@ -318,7 +319,7 @@ class NotificationDetailScreen extends StatelessWidget {
           Row(
             children: [
               Icon(
-                Icons.info_rounded,
+                IconlyBold.infoSquare,
                 color: Colors.purple[700],
                 size: 20,
               ),
@@ -411,7 +412,7 @@ class NotificationDetailScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.close),
+            icon: const Icon(IconlyLight.closeSquare),
             label: const Text('Fermer'),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -430,7 +431,7 @@ class NotificationDetailScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.chat_bubble_rounded),
+            icon: const Icon(IconlyBold.chat),
             label: const Text('Voir la conversation'),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -449,7 +450,7 @@ class NotificationDetailScreen extends StatelessWidget {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: const Icon(Icons.close),
+            icon: const Icon(IconlyLight.closeSquare),
             label: const Text('Fermer'),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -468,7 +469,7 @@ class NotificationDetailScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.flight_takeoff_rounded),
+            icon: const Icon(IconlyBold.send),
             label: const Text('Voir le voyage'),
             style: ElevatedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -495,7 +496,7 @@ class NotificationDetailScreen extends StatelessWidget {
                     ),
                   );
                 },
-                icon: const Icon(Icons.close),
+                icon: const Icon(IconlyLight.closeSquare),
                 label: const Text('Refuser'),
                 style: OutlinedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
@@ -515,7 +516,7 @@ class NotificationDetailScreen extends StatelessWidget {
                     ),
                   );
                 },
-                icon: const Icon(Icons.check),
+                icon: const Icon(IconlyBold.tickSquare),
                 label: const Text('Accepter'),
                 style: ElevatedButton.styleFrom(
                   padding: const EdgeInsets.symmetric(vertical: 14),
@@ -537,7 +538,7 @@ class NotificationDetailScreen extends StatelessWidget {
                 ),
               );
             },
-            icon: const Icon(Icons.info_outline),
+            icon: const Icon(IconlyLight.infoSquare),
             label: const Text('Voir les détails'),
             style: OutlinedButton.styleFrom(
               padding: const EdgeInsets.symmetric(vertical: 14),
@@ -555,7 +556,7 @@ class NotificationDetailScreen extends StatelessWidget {
         onPressed: () {
           Navigator.pop(context);
         },
-        icon: const Icon(Icons.check),
+        icon: const Icon(IconlyBold.tickSquare),
         label: const Text('Compris'),
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 14),

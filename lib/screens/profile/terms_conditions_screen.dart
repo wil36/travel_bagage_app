@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 
 class TermsConditionsScreen extends StatelessWidget {
   const TermsConditionsScreen({super.key});
@@ -93,7 +94,7 @@ class TermsConditionsScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Icon(Icons.info_outline, color: Colors.blue[700]),
+                    Icon(IconlyLight.infoSquare, color: Colors.blue[700]),
                     const SizedBox(width: 12),
                     Expanded(
                       child: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:travel_bagage_app/screens/declare_trip_screen.dart';
 import 'package:travel_bagage_app/screens/declare_package_screen.dart';
 import 'package:travel_bagage_app/screens/trips_list_screen.dart';
@@ -15,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   final List<Widget> _pages = [
     const HomePage(),
@@ -86,7 +87,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Travel Bagage'),
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_outlined),
+            icon: const Icon(IconlyLight.notification),
             onPressed: () {
               Navigator.push(
                 context,
@@ -117,7 +118,7 @@ class HomePage extends StatelessWidget {
               context,
               title: 'Déclarer un voyage',
               subtitle: 'Gagnez de l\'argent en transportant',
-              icon: Icons.flight_takeoff,
+              icon: IconlyLight.send,
               color: Colors.blue,
               onTap: () {
                 Navigator.push(
@@ -133,7 +134,7 @@ class HomePage extends StatelessWidget {
               context,
               title: 'Publier un colis',
               subtitle: 'Trouvez un voyageur pour votre envoi',
-              icon: Icons.inventory_2_outlined,
+              icon: IconlyLight.bag,
               color: Colors.orange,
               onTap: () {
                 Navigator.push(
@@ -160,7 +161,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: _buildStatCard(
-                    icon: Icons.flight,
+                    icon: IconlyBold.send,
                     title: 'Voyages',
                     value: '3',
                     color: Colors.blue,
@@ -169,7 +170,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(width: 16),
                 Expanded(
                   child: _buildStatCard(
-                    icon: Icons.inventory_2_outlined,
+                    icon: IconlyBold.bag,
                     title: 'Colis',
                     value: '5',
                     color: Colors.orange,
@@ -182,7 +183,7 @@ class HomePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: _buildStatCard(
-                    icon: Icons.star,
+                    icon: IconlyBold.star,
                     title: 'Note',
                     value: '4.8',
                     color: Colors.amber,
@@ -191,7 +192,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(width: 16),
                 Expanded(
                   child: _buildStatCard(
-                    icon: Icons.euro,
+                    icon: IconlyBold.wallet,
                     title: 'Gains',
                     value: '520€',
                     color: Colors.green,
@@ -264,7 +265,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Icon(
-                Icons.arrow_forward_ios,
+                IconlyLight.arrowRight2,
                 color: Colors.grey[400],
                 size: 18,
               ),
