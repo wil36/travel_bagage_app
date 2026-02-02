@@ -1,32 +1,45 @@
 PODS:
+  - connectivity_plus (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - flutter_any_logo (0.0.1):
     - Flutter
   - image_picker_ios (0.0.1):
     - Flutter
+  - shared_preferences_foundation (0.0.1):
+    - Flutter
+    - FlutterMacOS
   - url_launcher_ios (0.0.1):
     - Flutter
 
 DEPENDENCIES:
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - Flutter (from `Flutter`)
   - flutter_any_logo (from `.symlinks/plugins/flutter_any_logo/ios`)
   - image_picker_ios (from `.symlinks/plugins/image_picker_ios/ios`)
+  - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 EXTERNAL SOURCES:
+  connectivity_plus:
+    :path: ".symlinks/plugins/connectivity_plus/ios"
   Flutter:
     :path: Flutter
   flutter_any_logo:
     :path: ".symlinks/plugins/flutter_any_logo/ios"
   image_picker_ios:
     :path: ".symlinks/plugins/image_picker_ios/ios"
+  shared_preferences_foundation:
+    :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
+  connectivity_plus: cb623214f4e1f6ef8fe7403d580fdad517d2f7dd
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_any_logo: 521c8425da7e6be1099ad1bc65a58a5a123e183e
   image_picker_ios: e0ece4aa2a75771a7de3fa735d26d90817041326
+  shared_preferences_foundation: 7036424c3d8ec98dfe75ff1667cb0cd531ec82bb
   url_launcher_ios: 7a95fa5b60cc718a708b8f2966718e93db0cef1b
 
 PODFILE CHECKSUM: 53a6aebc29ccee84c41f92f409fc20cd4ca011f1

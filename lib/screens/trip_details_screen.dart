@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:travel_bagage_app/models/trip_model.dart';
+import 'package:travel_bagage_app/data/models/trip_model.dart';
 
 class TripDetailsScreen extends StatelessWidget {
   final TripModel trip;

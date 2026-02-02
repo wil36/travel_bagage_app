@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:travel_bagage_app/models/package_model.dart';
+import 'package:travel_bagage_app/data/models/package_model.dart';
 import 'package:travel_bagage_app/screens/package_details_screen.dart';
 import 'package:travel_bagage_app/screens/user_profile_screen.dart';
 import 'package:travel_bagage_app/widgets/bottom_nav_spacer.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:travel_bagage_app/models/trip_model.dart';
-import 'package:travel_bagage_app/models/package_model.dart';
+import 'package:travel_bagage_app/data/models/trip_model.dart';
+import 'package:travel_bagage_app/data/models/package_model.dart';
 import 'package:travel_bagage_app/screens/trip_details_screen.dart';
 import 'package:travel_bagage_app/screens/package_details_screen.dart';
 

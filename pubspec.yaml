@@ -46,6 +46,24 @@ dependencies:
   # URL launcher pour ouvrir email, téléphone, liens externes
   url_launcher: ^6.2.5
 
+  # State Management - BLoC
+  flutter_bloc: ^8.1.6
+
+  # Dependency Injection
+  get_it: ^7.7.0
+
+  # Functional Programming (Either type)
+  dartz: ^0.10.1
+
+  # Value Equality
+  equatable: ^2.0.5
+
+  # Local Storage
+  shared_preferences: ^2.3.2
+
+  # Network connectivity check
+  internet_connection_checker: ^3.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -59,6 +77,9 @@ dev_dependencies:
 
   # Génération des icônes de l'application
   flutter_launcher_icons: ^0.14.3
+
+  bloc_test: ^9.1.7
+  mocktail: ^1.0.4
 
 # Configuration des icônes de l'application
 flutter_launcher_icons:

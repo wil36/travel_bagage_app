@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_bagage_app/core/di/injection_container.dart' as di;
+import 'package:travel_bagage_app/presentation/blocs/auth_bloc.dart';
+import 'package:travel_bagage_app/presentation/blocs/auth_event.dart';
 import 'package:travel_bagage_app/screens/onboarding/onboarding_screen.dart';
 
-void main() {
+void main() async {
+  // Nécessaire pour les plugins async avant runApp
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Initialise l'injection de dépendances
+  await di.init();
+
   runApp(const MyApp());
 }
 
@@ -10,70 +20,81 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Travel Bagage',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.blue,
-          brightness: Brightness.light,
+    return MultiBlocProvider(
+      providers: [
+        // Fournit AuthBloc à toute l'application
+        BlocProvider<AuthBloc>(
+          create: (_) => di.sl<AuthBloc>()..add(const AuthCheckRequested()),
         ),
-        useMaterial3: true,
-        scaffoldBackgroundColor: Colors.white,
-        appBarTheme: const AppBarTheme(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.white,
-          foregroundColor: Colors.black,
-        ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: const Color(0xFF2196F3),
-            foregroundColor: Colors.white,
+      ],
+      child: MaterialApp(
+        title: 'Bagli',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.blue,
+            brightness: Brightness.light,
+          ),
+          useMaterial3: true,
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: const AppBarTheme(
+            centerTitle: true,
             elevation: 0,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+            backgroundColor: Colors.white,
+            foregroundColor: Colors.black,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFF2196F3),
+              foregroundColor: Colors.white,
+              elevation: 0,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+          outlinedButtonTheme: OutlinedButtonThemeData(
+            style: OutlinedButton.styleFrom(
+              foregroundColor: Colors.blue,
+              side: const BorderSide(color: Colors.blue),
+              elevation: 0,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+            ),
+          ),
+          inputDecorationTheme: InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.grey[50],
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: Colors.grey[300]!),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: BorderSide(color: Colors.grey[300]!),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(12),
+              borderSide: const BorderSide(color: Colors.blue, width: 2),
+            ),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
+          ),
+          cardTheme: CardThemeData(
+            elevation: 0,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
+              side: BorderSide(color: Colors.grey[200]!),
             ),
           ),
         ),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-          style: OutlinedButton.styleFrom(
-            foregroundColor: Colors.blue,
-            side: const BorderSide(color: Colors.blue),
-            elevation: 0,
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-          ),
-        ),
-        inputDecorationTheme: InputDecorationTheme(
-          filled: true,
-          fillColor: Colors.grey[50],
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey[300]!),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: BorderSide(color: Colors.grey[300]!),
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
-            borderSide: const BorderSide(color: Colors.blue, width: 2),
-          ),
-          contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        ),
-        cardTheme: CardThemeData(
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(12),
-            side: BorderSide(color: Colors.grey[200]!),
-          ),
-        ),
+        home: const OnboardingScreen(),
       ),
-      home: const OnboardingScreen(),
     );
   }
 }
